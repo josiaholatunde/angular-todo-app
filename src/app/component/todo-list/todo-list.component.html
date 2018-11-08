@@ -1,0 +1,29 @@
+<div class="row mt-4">
+    <div class="col-md-4 mt-4" *ngFor="let todo of todos">
+        <div class="card">
+          <div class="card-header">
+             <h3>{{ todo.title }}
+                <i class="fa fa-times" (click)="deleteTodo(todo)" style="float:right;color: red;cursor: pointer"></i>
+                <a [routerLink]="['/todos/editTodo',todo.id]">
+                  <i class="fa fa-pencil" style="float:right; color: green;cursor: pointer"></i>
+                </a>
+             </h3>
+          </div>
+            <div class="card-body">
+              <div>
+                  <h3>
+                  </h3>
+                  <h5>Priority: {{todo.priority}}</h5>
+                  <h5>Deadline: {{todo.deadlineDate | date : 'mediumDate'}} {{ todo.deadlineTime | date: 'shortTime' }}</h5>
+                  <h5>Status:
+                    <span [ngSwitch]="todo.status">
+                      <span *ngSwitchCase="0">Done</span>
+                      <span *ngSwitchCase="1">Not Done</span>
+                    </span>
+                  </h5>
+                  <span style="cursor:pointer"><input type="checkbox" class="checkbox-inline" (click)="changeStatus(todo)" name="mark" />&nbsp;&nbsp;Mark as Done</span>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

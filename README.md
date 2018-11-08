@@ -1,5 +1,6 @@
 # TodoApp
-
+A Todo App to perform CRUD operations with todos and set target/expiry alongside that status of the todo item.
+ 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.1.
 
 ## Development server

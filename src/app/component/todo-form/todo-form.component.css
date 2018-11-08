@@ -1,0 +1,9 @@
+form {
+  margin-top: 40px;
+}
+form input[type=text],select.form-control,form input[type=date],form input[type=time]{
+  box-shadow: none;
+}
+.submitBtn {
+  box-shadow: none!important;
+}
