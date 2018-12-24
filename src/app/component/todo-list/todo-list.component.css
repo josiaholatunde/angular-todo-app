@@ -3,3 +3,6 @@ input[type=checkbox] {
   padding: 5px;
   cursor: pointer;
 }
+span input, span label {
+  cursor: pointer;
+}

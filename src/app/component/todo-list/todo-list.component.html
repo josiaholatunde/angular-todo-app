@@ -13,15 +13,20 @@
               <div>
                   <h3>
                   </h3>
-                  <h5>Priority: {{todo.priority}}</h5>
-                  <h5>Deadline: {{todo.deadlineDate | date : 'mediumDate'}} {{ todo.deadlineTime | date: 'shortTime' }}</h5>
+                  <h5>Priority: {{ todo.priority }}</h5>
+                  <h5>Deadline: {{todo.deadlineDate | date : 'mediumDate'}} {{ todo.deadlineTime | date: 'mediumTime' }}</h5>
                   <h5>Status:
                     <span [ngSwitch]="todo.status">
-                      <span *ngSwitchCase="0">Done</span>
-                      <span *ngSwitchCase="1">Not Done</span>
+                      <span *ngSwitchCase="0">Not Done</span>
+                      <span *ngSwitchCase="1">Done</span>
                     </span>
                   </h5>
-                  <span style="cursor:pointer"><input type="checkbox" class="checkbox-inline" (click)="changeStatus(todo)" name="mark" />&nbsp;&nbsp;Mark as Done</span>
+                  <span>
+                    <input type="checkbox" id="status{{todo.id}}" class="checkbox-inline" (click)="changeStatus(todo)" name="mark" />&nbsp;&nbsp;
+                    <label for="status{{todo.id}}">
+                      Mark as Done
+                    </label>
+                  </span>
               </div>
             </div>
         </div>

@@ -1,22 +1,22 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
-      <form class="card" #todoForm="ngForm" (ngSubmit)="saveTodo(todoForm)">
-          <h3 class="text-primary card-header">Add Todo Form</h3>
+      <form class="card" #todoForm="ngForm" (ngSubmit)="submitForm()">
+          <h3 class="text-primary card-header">{{ isUpdate ? 'Update' : 'Add'}} Todo Form</h3>
           <div class="card-body">
               <div class="form-group">
                 <div class="alert alert-danger" *ngIf="hasMessage">One or more inputs can not be empty</div>
-                <div class="alert alert-success" [hidden]="!message">{{message}}</div>
+                <div class="alert alert-success" *ngIf="message.length > 0">{{message}}</div>
                   <label for="title">Title</label>
-                  <input type="text" class="form-control" #titleControl="ngModel"  name="title" id="title" [(ngModel)]="title" required />
+                  <input type="text" class="form-control" #titleControl="ngModel"  name="title" id="title" [(ngModel)]="todo.title" required />
                   <div class="alert alert-danger" *ngIf="titleControl.invalid && (titleControl.touched || titleControl.dirty)" >
                     Title field can not be empty
                   </div>
               </div>
               <div class="form-group">
                   <label for="priority">Priority</label>
-                  <select class="form-control" id="priority" #priorityControl="ngModel" name="priority" [(ngModel)]="defaultPriority" required>
-                      <option [value]="defaultPriority">Select a priority value</option>
-                      <option *ngFor="let prior of priority" [value]="prior"> {{ prior }}</option>
+                  <select class="form-control" id="priority" #priorityControl="ngModel" name="priority" [(ngModel)]="todo.priority"  required>
+                      <option value="null">Select a priority value</option>
+                      <option *ngFor="let prior of priority;let i=index" [value]="i"> {{ prior }}</option>
                   </select>
               </div>
               <div class="form-row">
@@ -25,16 +25,16 @@
                 </div>
                   <div class="col-md-5">
                       <label for="date">Date</label>
-                      <input type="date" class="form-control" name="date" id="date" [(ngModel)]="date" required />
+                      <input type="date" class="form-control" name="date" id="date" [(ngModel)]="todo.deadlineDate" required />
                   </div>
                   <div class="col-md-5">
                       <label for="time">Time</label>
-                      <input type="time" class="form-control" name="time" id="time" [(ngModel)]="time" required />
+                      <input type="time" class="form-control" name="time" id="time" [(ngModel)]="todo.deadlineTime" required />
                   </div>
               </div>
               <div class="row">
                 <div class="col-md-3">
-                    <button type="submit" class="btn btn-primary submitBtn mt-3">Add Todo</button>
+                    <button type="submit" class="btn btn-primary submitBtn mt-3">{{ isUpdate ? 'Update' : 'Add'}} Todo</button>
                 </div>
               </div>
           </div>

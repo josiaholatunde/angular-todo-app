@@ -1,11 +1,13 @@
+
 export class Todo {
   id: number;
   title: string;
-  priority: string;
+  priority: Priority;
   deadlineDate: any;
   deadlineTime: any;
-  status: Status;
-  constructor(id: number,title:string, priority: string,deadlineDate:any, time:any, status: Status) {
+  status: boolean;
+
+  constructor(id: number, title: string, priority: Priority, deadlineDate: any, time: any, status: boolean) {
     this.id = id;
     this.title = title;
     this.priority = priority;
@@ -15,8 +17,10 @@ export class Todo {
   }
 }
 
-export enum Status {
-  Done,
-  NotDone
+export enum Priority {
+  Urgent,
+  Important,
+  Normal,
+  NotUrgent
 }
 
